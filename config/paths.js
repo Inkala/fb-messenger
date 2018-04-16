@@ -42,10 +42,11 @@ function getServedPath(appPackageJson) {
 module.exports = {
   dotenv: resolveApp('.env'),
   appBuild: resolveApp('build'),
+  serverBuild: resolveApp('build/server'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  serverBuild: resolveApp('build/server'),
   appIndexJs: resolveApp('src/client/index.js'),
+  serverIndexJs: resolveApp('src/server/index-dev.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),
