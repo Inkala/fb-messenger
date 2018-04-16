@@ -119,11 +119,11 @@ compiler.watch({}, (err, stats) => {
 
 Before you start part 2, please checkout branch part-2-redux
 
-1. Please edit server/app.js so the server side passes a store to the App.
+1. Please edit server/app.js so the server side passes a store to the Root component.
 
 2. How can you send the Thread and the Conversation from the server-side so they are displayed on the client when JS is disabled on the client? Hint, you need to pass some initial state to the store on the server-side.
 
-3. Can you fix this warning? Warning: Did not expect server HTML to contain a &lt;img&gt; in &lt;div&gt;. Hint, the problem is that the initial state on the server is different than the initial state on the client.
+3. Can you fix this warning? Warning: Did not expect server HTML to contain a &lt;img&gt; in &lt;div&gt;. Hint, the problem is that the initial state on the server is different than the initial state on the client. You need to edit just this file:  src/client/index.js. Have a look at src/server/render to get some clues about what you need to add to src/client/index.js
 
 ## Bonus
 
