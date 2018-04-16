@@ -103,7 +103,7 @@ compiler.watch({}, (err, stats) => {
 })
 ```
 
-### Exercise part 2
+### Exercise part 2, React
 
 1. Edit server/render.js so it uses the renderToString function. Hint, in what part of the HTML should React render your app?
 
