@@ -14,7 +14,6 @@ process.on('unhandledRejection', err => {
 // Ensure environment variables are read.
 require('../config/env');
 
-const { exec } = require('child_process')
 const fs = require('fs');
 const chalk = require('chalk');
 const webpack = require('webpack');
@@ -71,7 +70,7 @@ choosePort(HOST, DEFAULT_PORT)
     const appName = require(paths.appPackageJson).name;
     const urls = prepareUrls(protocol, HOST, port);
     // Create a webpack compiler that is configured with custom messages.
-    const compiler = webpack(config)
+    const compiler = createCompiler(webpack, config, appName, urls, useYarn);
     // Load proxy config
     const proxySetting = require(paths.appPackageJson).proxy;
     const proxyConfig = prepareProxy(proxySetting, paths.appPublic);
@@ -86,40 +85,11 @@ choosePort(HOST, DEFAULT_PORT)
       if (err) {
         return console.log(err);
       }
-
-      process.env.REACT_APP_CLIENT_PORT = port
-      process.env.REACT_APP_SERVER_PORT = 8888
-      const configWebpackServer = require('../config/webpack.config.server')
-      const compiler = webpack(configWebpackServer)
-      const urls = prepareUrls(protocol, HOST, process.env.REACT_APP_SERVER_PORT)
-      let isServerRunning
-
-      compiler.watch({}, (err, stats) => {
-        if (err) console.log('error on webpack server', err)
-
-        if (!isServerRunning) {
-          isServerRunning = true
-          const nodemon = exec(
-            'nodemon --watch build/server build/server/index.js build/server/index.js'
-          )
-
-          // This is to outpout in the terminal the child process
-          nodemon.stdout.on('data', (data) => {
-            console.log(data.toString())
-          })
-          nodemon.on('exit', (code) => {
-            console.log(`nodemon process exited with code ${code.toString()}`)
-          })
-
-          console.log(chalk.yellow(`Starting the server on port ${process.env.REACT_APP_SERVER_PORT}...\n`))
-          setTimeout(
-            () => {
-              openBrowser(urls.localUrlForBrowser)
-            },
-            1000
-          )
-        }
-      })
+      if (isInteractive) {
+        clearConsole();
+      }
+      console.log(chalk.cyan('Starting the development server...\n'));
+      openBrowser(urls.localUrlForBrowser);
     });
 
     ['SIGINT', 'SIGTERM'].forEach(function(sig) {
