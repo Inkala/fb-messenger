@@ -4,8 +4,9 @@ const DEV = process.env.NODE_ENV === 'development'
 const assetManifest = JSON.parse(process.env.REACT_APP_ASSET_MANIFEST || '{}')
 const bundleUrl = DEV ? '/static/js/bundle.js' : `/${assetManifest['main.js']}`
 
-export default (component, { sheet, response, status = 200, initialState = null }) => {
+export default (component, { sheet, response, status = 200 }) => {
   const bodyHTML = renderToString(component)
+  const css = sheet.getStyleTags()
 
   response.send(`
   <!DOCTYPE html>
@@ -16,18 +17,14 @@ export default (component, { sheet, response, status = 200, initialState = null 
         <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link href="/static/css/main.css" media="all" rel="stylesheet" />
-        <script>
-          window.__store_initial_state__ = ${JSON.stringify(initialState)}
-        </script>
-        ${sheet.getStyleTags()}
-
+        
         <link rel="manifest" href="/manifest.json">
         <link rel="shortcut icon" href="/favicon.ico">
         <title>Clone Messenger</title>
       </head>
       <body>
-        <div id="root">${bodyHTML}</div>
-        <script type="application/javascript" src="${bundleUrl}"></script>
+        <div id="root">${ 'Hello SSR!' }</div>
+        <script type="application/javascript" src="${ '?????' }"></script>
       </body>
   </html>
   `

@@ -107,11 +107,13 @@ compiler.watch({}, (err, stats) => {
 
 1. Edit server/render.js so it uses the renderToString function. Hint, in what part of the HTML should React render your app?
 
-2. Edit server/render.js so it sends the JavaScript bundle to the client. Hint, Webpack is not creating a file on the disk so don't search for a bundle.js file in your disk. Webpack is generating and serving the file from memory (so it's faster).
+2. Edit server/render.js so it sends the CSS to the page. Hint, read how SSR works in styled-components [https://www.styled-components.com/docs/advanced#server-side-rendering](https://www.styled-components.com/docs/advanced#server-side-rendering)
 
-3. Can you fix this warning: `render(): Calling ReactDOM.render() to hydrate server-rendered markup will stop working in React v17. Replace the ReactDOM.render() call with ReactDOM.hydrate() if you want React to attach to the server HTML.`. Hint, you should use a function called hydrate.
+3. Edit server/render.js so it sends the JavaScript bundle to the client. Hint, Webpack is not creating a file on the disk so don't search for a bundle.js file in your disk. Webpack is generating and serving the file from memory (so it's faster).
 
-4. If you disable JS in your browser, why there are no messages rendered from the server? Can you fix that so the server renders a list of messages when JS is disabled on the client?
+4. Can you fix this warning: `render(): Calling ReactDOM.render() to hydrate server-rendered markup will stop working in React v17. Replace the ReactDOM.render() call with ReactDOM.hydrate() if you want React to attach to the server HTML.`. Hint, you should use a function called hydrate.
+
+5. If you disable JS in your browser, why there are no messages rendered from the server? Can you fix that so the server renders a list of messages when JS is disabled on the client?
 
 ### Exercise part 3, Redux:
 

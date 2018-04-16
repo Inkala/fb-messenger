@@ -25,9 +25,6 @@ const reactApp = () => (req, response) => {
   const setStatus = (newStatus) => {
     status = newStatus
   }
-  const { storeInitiaState = {}} = response
-  const initialState = { session: req.user, ...storeInitiaState }
-  const store = configureStore(initialState)
   const sheet = new ServerStyleSheet()
 
   try {
@@ -35,7 +32,7 @@ const reactApp = () => (req, response) => {
       <StyleSheetManager sheet={sheet.instance}>
         <Context setStatus={setStatus}>
           <Router context={{}} location={req.url}>
-            <Root store={store}/>
+            <Root />
           </Router>
         </Context>
       </StyleSheetManager>,
