@@ -1,6 +1,6 @@
 # ReactJS Facebook messenger
 
-The goal of this exercise is to learn how to start testing in JavaScript.
+The goal of this exercise is to learn how to do Server Side Rendering (SSR) in React.
 
 ## To get started
 
@@ -25,14 +25,14 @@ If you haven't already set up your project, head here and follow the instruction
 
 #### Configure Webpack
 
-- In config/paths.js, edit the file and add the following line after `appBuild`
-    `serverBuild: resolveApp('build/server'),`
-- In config/paths.js, edit the following export key `appIndexJs` to be `appIndexJs: resolveApp('src/client/index.js'),`
-- In config/paths.js, edit the file and add the following line after `appIndexJs`
-    `serverIndexJs: resolveApp('src/server/index-dev.js'),`
-
+- In config/paths.js, edit the file and add the following line after `appBuild`:
+  ```serverBuild: resolveApp('build/server'),```
+- In config/paths.js, edit the following export key `appIndexJs` to be:
+  ```appIndexJs: resolveApp('src/client/index.js'),```
+- In config/paths.js, edit the file and add the following line after `appIndexJs`:
+    ```serverIndexJs: resolveApp('src/server/index-dev.js'),```
 - Copy webpack.config.dev.js and name it webpack.config.server.base.js
-- Comment line 48: require.resolve('react-dev-utils/webpackHotDevClient'),
+- In config/paths.js, comment line 48: require.resolve('react-dev-utils/webpackHotDevClient'),
 - In webpack.config.dev.js, replace in the entry `paths.appIndexJs` for `paths.serverIndexJs`
 - In webpack.config.dev.js, comment the `ouput`. We are setting the output in webpack.config.server.js
 - In webpack.config.dev.js, comment the `plugin` ModuleScopePlugin. This is because the fake api needs to import mocks from public/static/mocks.
