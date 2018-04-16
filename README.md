@@ -21,7 +21,7 @@ If you haven't already set up your project, head here and follow the instruction
 
 ## Exercise
 
-### Part 1
+### Exercise part 1
 
 #### Configure Webpack
 
@@ -103,19 +103,33 @@ compiler.watch({}, (err, stats) => {
 })
 ```
 
+### Exercise part 2
+
+1. Edit server/render.js so it uses the renderToString function. Hint, in what part of the HTML should React render your app?
+
+2. Edit server/render.js so it sends the JavaScript bundle to the client. Hint, Webpack is not creating a file on the disk so don't search for a bundle.js file in your disk. Webpack is generating and serving the file from memory (so it's faster).
+
+3. Can you fix this warning: `render(): Calling ReactDOM.render() to hydrate server-rendered markup will stop working in React v17. Replace the ReactDOM.render() call with ReactDOM.hydrate() if you want React to attach to the server HTML.`. Hint, you should use a function called hydrate.
+
+4. If you disable JS in your browser, why there are no messages rendered from the server? Can you fix that so the server renders a list of messages when JS is disabled on the client?
+
+### Exercise part 3, Redux:
+
+Before you start part 2, please checkout branch part-2-redux
+
+1. Please edit server/app.js so the server side passes a store to the App.
+
+2. How can you send the Thread and the Conversation from the server-side so they are displayed on the client when JS is disabled on the client? Hint, you need to pass some initial state to the store on the server-side.
+
+3. Can you fix this warning? Warning: Did not expect server HTML to contain a &lt;img&gt; in &lt;div&gt;. Hint, the problem is that the initial state on the server is different than the initial state on the client.
 
 ## Bonus
 
-...
-
+Let's consolidate our knowledge by making our FB Messenger clone Server Side Rendering from scratch. Checkout this branch [https://github.com/leanjscom/fb-messenger/tree/redux-leanjs-part2](https://github.com/leanjscom/fb-messenger/tree/redux-leanjs-part2) and make the project SSR.
 
 ## Links
 
--[https://martinfowler.com/bliki/TestPyramid.html](https://martinfowler.com/bliki/TestPyramid.html)
-- [https://facebook.github.io/jest/docs/en/expect.html#content](https://facebook.github.io/jest/docs/en/expect.html#content)
-- [https://martinfowler.com/articles/mocksArentStubs.html](https://martinfowler.com/articles/mocksArentStubs.html)
-- [https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a](https://medium.com/javascript-scene/mocking-is-a-code-smell-944a70c90a6a)
-- [https://www.youtube.com/watch?v=EZ05e7EMOLM](https://www.youtube.com/watch?v=EZ05e7EMOLM)
+- [https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d](https://medium.com/leanjs/universal-create-react-app-step-by-step-b80ba68d125d)
 
 ## License
 
