@@ -33,10 +33,10 @@ If you haven't already set up your project, head here and follow the instruction
     ```serverIndexJs: resolveApp('src/server/index-dev.js'),```
 - Copy webpack.config.dev.js and name it webpack.config.server.base.js
 - In config/paths.js, comment line 48: require.resolve('react-dev-utils/webpackHotDevClient'),
-- In webpack.config.dev.js, replace in the entry `paths.appIndexJs` for `paths.serverIndexJs`
-- In webpack.config.dev.js, comment the `ouput`. We are setting the output in webpack.config.server.js
-- In webpack.config.dev.js, comment the `plugin` ModuleScopePlugin. This is because the fake api needs to import mocks from public/static/mocks.
-- In webpack.config.dev.js, replace the module.rules `test: /\.css$/,` by:
+- In webpack.server.base.js, replace in the entry `paths.appIndexJs` for `paths.serverIndexJs`
+- In webpack.server.base.js, comment the `ouput`. We are setting the output in webpack.config.server.js
+- In webpack.server.base.js, comment the `plugin` ModuleScopePlugin. This is because the fake api needs to import mocks from public/static/mocks.
+- In webpack.server.base.js, replace the module.rules `test: /\.css$/,` by:
 ```
 {
   test: /\.css$/,
@@ -51,7 +51,7 @@ If you haven't already set up your project, head here and follow the instruction
   ]
 },
 ```
-- In webpack.config.dev.js, comment all the plugins:
+- In webpack.server.base.js, comment all the plugins:
 
 #### Edit scripts/start.js
 
